@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FirstOne</string>
+    <string name="camera_button">Take Picture</string>
 </resources>
