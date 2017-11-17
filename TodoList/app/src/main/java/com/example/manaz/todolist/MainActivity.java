@@ -1,93 +1,89 @@
 package com.example.manaz.todolist;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import java.util.ArrayList;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.ContextMenu;
+import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.graphics.drawable.Drawable;
-import android.graphics.PorterDuff;
-import android.widget.EditText;
-import android.support.v7.app.AlertDialog;
-import android.content.DialogInterface;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.util.Log;
+import android.widget.Toast;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    DbHelper dbHelper;
-    ArrayAdapter<String> mAdapter;
-    ListView lstTask;
+    private List<ToDo> toDoList = new ArrayList<>();
+    private ToDoAdapter toDoAdapter;
+    DatabaseHandler db;
+    private RecyclerView recyclerView;
+    private TextView noToDoText;
+    private ImageView noToDoIcon;
+    private boolean  _doubleBackToExitPressedOnce    = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        recyclerView = (RecyclerView) findViewById(R.id.LIST);
+        noToDoText= (TextView) findViewById(R.id.noToDoText);
+        noToDoIcon= (ImageView) findViewById(R.id.noToDoIcon);
 
-        dbHelper = new DbHelper(this);
-        lstTask = (ListView)findViewById(R.id.lstTask);
-        loadTaskList();
+        db = new DatabaseHandler(this);
+        toDoList = db.getAllToDo();
+
+        if (toDoList.size() == 0) {
+            Toast.makeText(MainActivity.this, "No To Do found", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            noToDoText.setVisibility(View.GONE);
+            noToDoIcon.setVisibility(View.GONE);
+        }
+
+        toDoAdapter = new ToDoAdapter(toDoList, db, this, recyclerView, toDoAdapter);
+
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        recyclerView.setAdapter(toDoAdapter);
+
     }
 
-    private void loadTaskList() {
-        ArrayList<String> taskList = dbHelper.getTaskList();
-        if(mAdapter==null){
-            mAdapter = new ArrayAdapter<String>(this,R.layout.row,R.id.task_title,taskList);
-            lstTask.setAdapter(mAdapter);
-        }
-        else{
-            mAdapter.clear();
-            mAdapter.addAll(taskList);
-            mAdapter.notifyDataSetChanged();
-        }
+    public void addNewToDo(View view) {
+        Intent intent = new Intent(MainActivity.this, NewToDo.class);
+        startActivity(intent);
     }
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu,menu);
+    public void onBackPressed() {
 
-        //Change menu icon color
-        Drawable icon = menu.getItem(0).getIcon();
-        icon.mutate();
-        icon.setColorFilter(getResources().getColor(android.R.color.white), PorterDuff.Mode.SRC_IN);
-
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.action_add_task:
-                final EditText taskEditText = new EditText(this);
-                AlertDialog dialog = new AlertDialog.Builder(this)
-                        .setTitle("Add New Task")
-                        .setMessage("What do you want to do next?")
-                        .setView(taskEditText)
-                        .setPositiveButton("Add", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                String task = String.valueOf(taskEditText.getText());
-                                dbHelper.insertNewTask(task);
-                                loadTaskList();
-                            }
-                        })
-                        .setNegativeButton("Cancel",null)
-                        .create();
-                dialog.show();
-                return true;
+        if (_doubleBackToExitPressedOnce) {
+            finishAffinity();
         }
-        return super.onOptionsItemSelected(item);
+        this._doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Press again to quit", Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                _doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
     }
 
-    public void deleteTask(View view){
-        View parent = (View)view.getParent();
-        TextView taskTextView = (TextView)parent.findViewById(R.id.task_title);
-        Log.e("String", (String) taskTextView.getText());
-        String task = String.valueOf(taskTextView.getText());
-        dbHelper.deleteTask(task);
-        loadTaskList();
-    }
+
+
 }
