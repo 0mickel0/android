@@ -11,28 +11,29 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="25dp"
+        android:background="#000000"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="10dp"
-        tools:context="com.example.sadmansakib.todo.MainActivity"
-        android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true">
+        tools:context="com.example.sadmansakib.todo.MainActivity">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp">
 
-        <EditText
-            android:id="@+id/TITLE"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Title"
-            android:textSize="20dp" />
+            <EditText
+                android:id="@+id/TITLE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Title"
+                android:textSize="20dp" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -64,6 +65,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="Choose Date"
+                android:textColor="#dde2dd"
                 android:textSize="17dp" />
 
             <Button
@@ -80,6 +82,7 @@
                 android:drawableStart="@android:drawable/ic_menu_my_calendar"
                 android:onClick="showDatePickerDialog"
                 android:text="PICK DATE"
+                android:textColor="#000"
                 android:textSize="17dp" />
         </RelativeLayout>
 
@@ -98,6 +101,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="Choose Time"
+                android:textColor="#dde2dd"
                 android:textSize="17dp" />
 
             <Button
@@ -115,6 +119,7 @@
                 android:onClick="showTimePickerDialog"
                 android:text="PICK TIME"
 
+                android:textColor="#000"
                 android:textSize="17dp" />
         </RelativeLayout>
 
@@ -123,7 +128,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:height="40dp"
-            android:switchMinWidth="40dp"
+            android:switchMinWidth="70dp"
             android:switchPadding="20dp"
             android:text=" Set Notification Alarm"
             android:textSize="17dp" />
@@ -139,6 +144,7 @@
             android:text="SAVE"
             android:textColor="#000000"
             android:textSize="25dp" />
+
 
     </LinearLayout>
 
