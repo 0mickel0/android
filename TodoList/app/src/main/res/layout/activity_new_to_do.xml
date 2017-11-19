@@ -17,7 +17,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="25dp"
-        android:background="#000000"
+        android:background="@color/colorAccent"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="10dp"
@@ -32,6 +32,7 @@
                 android:id="@+id/TITLE"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#000000"
                 android:hint="Enter Title"
                 android:textSize="20dp" />
 
@@ -46,6 +47,7 @@
                 android:id="@+id/DETAILS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#000000"
                 android:hint="Enter Details"
                 android:textSize="20dp" />
         </android.support.design.widget.TextInputLayout>
@@ -65,7 +67,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="Choose Date"
-                android:textColor="#dde2dd"
+                android:textColor="#000000"
                 android:textSize="17dp" />
 
             <Button
@@ -101,7 +103,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="Choose Time"
-                android:textColor="#dde2dd"
+                android:textColor="#000000"
                 android:textSize="17dp" />
 
             <Button

@@ -12,13 +12,14 @@
         android:id="@+id/addNewToDo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_gravity="right|bottom"
         android:layout_margin="16dp"
         android:onClick="addNewToDo"
         android:src="@android:drawable/ic_input_add"
-        app:fabSize="normal"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        app:backgroundTint="@color/colorList"
+        app:fabSize="normal" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/LIST"
