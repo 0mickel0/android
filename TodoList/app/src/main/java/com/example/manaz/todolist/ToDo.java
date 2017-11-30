@@ -1,7 +1,7 @@
 package com.example.manaz.todolist;
 
 public class ToDo {
-    private String title, details, date, time;
+    private String title, details, date, time, location;
     private int id;
     private int notification_state;
 
@@ -55,10 +55,14 @@ public class ToDo {
     public String getTime() {
         return time;
     }
-
     public void setTime(String time) {
         this.time = time;
     }
+
+    public String getLoc() {
+        return location;
+    }
+    public void setLoc(String time) { this.location=location; }
 
     public int getId() {
         return id;

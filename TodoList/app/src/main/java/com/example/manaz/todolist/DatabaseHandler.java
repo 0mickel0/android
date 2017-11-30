@@ -69,20 +69,6 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 
     }
 
-    //Single Row
-//    public ToDo getToDo (int id)
-//    {
-//        SQLiteDatabase database=this.getReadableDatabase();
-//        Cursor cursor=database.query(TABLE_NAME,null,null,null,null,null,null);
-//
-//        if(cursor!=null)
-//            cursor.moveToFirst();
-//
-//        ToDo toDo=new ToDo(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getExtras(4));
-//        return toDo;
-//
-//
-//    }
 
     public int getLastID()
     {

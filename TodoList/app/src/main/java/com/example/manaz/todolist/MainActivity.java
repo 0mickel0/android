@@ -1,8 +1,11 @@
 package com.example.manaz.todolist;
 
 import android.app.Activity;
+import android.Manifest;
+import android.content.Context;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
