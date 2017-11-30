@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FirstOne.iml" filepath="$PROJECT_DIR$/FirstOne.iml" />
+      <module fileurl="file://F:\android\todo\android\FirstOne\FirstOne.iml" filepath="F:\android\todo\android\FirstOne\FirstOne.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://F:\android\todo\android\FirstOne\app\app.iml" filepath="F:\android\todo\android\FirstOne\app\app.iml" />
     </modules>
   </component>
 </project>

@@ -31,6 +31,11 @@ import android.location.LocationManager;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 
+
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -48,6 +53,9 @@ public class NewToDo extends AppCompatActivity {
     DatabaseHandler db;
     boolean editToDo=false;
     int ID_TABLE, id_max,time_offset;
+
+    private Button btnCamera;
+    private ImageView capturedImage;
 
     private static final int REQUEST_LOCATION = 1;
     LocationManager locationManager;
@@ -120,6 +128,20 @@ public class NewToDo extends AppCompatActivity {
         textView = (TextView)findViewById(R.id.text_location);
         button = (Button)findViewById(R.id.button_location);
 
+        btnCamera = (Button) findViewById(R.id.btnCamera);
+        capturedImage= (ImageView) findViewById(R.id.capturedImage);
+        btnCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openCamera();
+            }
+        });
+
+    }
+
+    private void openCamera(){
+        Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, 0);
     }
 
     public void getLocation(View view){
@@ -431,6 +453,13 @@ public class NewToDo extends AppCompatActivity {
         alarmManager.setExact(AlarmManager. RTC_WAKEUP, alarmTime, pendingIntent);
     }
 
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK) {
+            Bitmap bp = (Bitmap) data.getExtras().get("data");
+            capturedImage.setImageBitmap(bp);
+        }
+    }
 
 }
