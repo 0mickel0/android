@@ -37,8 +37,8 @@
                     android:id="@+id/TITLE"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="Заголовок"
                     android:textColor="#000000"
-                    android:hint="Enter Title"
                     android:textSize="20dp" />
 
             </android.support.design.widget.TextInputLayout>
@@ -52,8 +52,8 @@
                     android:id="@+id/DETAILS"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="Описание"
                     android:textColor="#000000"
-                    android:hint="Enter Details"
                     android:textSize="20dp" />
             </android.support.design.widget.TextInputLayout>
 
@@ -71,7 +71,7 @@
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Choose Date"
+                    android:text="Дата напоминания"
                     android:textColor="#000000"
                     android:textSize="17dp" />
 
@@ -88,7 +88,7 @@
                     android:drawablePadding="-20dp"
                     android:drawableStart="@android:drawable/ic_menu_my_calendar"
                     android:onClick="showDatePickerDialog"
-                    android:text="PICK DATE"
+                    android:text="Выбрать"
                     android:textColor="#000"
                     android:textSize="17dp" />
             </RelativeLayout>
@@ -107,7 +107,7 @@
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Choose Time"
+                    android:text="Время оповещения"
                     android:textColor="#000000"
                     android:textSize="17dp" />
 
@@ -124,7 +124,7 @@
                     android:drawablePadding="-20dp"
                     android:drawableStart="@android:drawable/ic_menu_recent_history"
                     android:onClick="showTimePickerDialog"
-                    android:text="PICK TIME"
+                    android:text="Выбрать"
 
                     android:textColor="#000"
                     android:textSize="17dp" />
@@ -137,7 +137,7 @@
                 android:height="40dp"
                 android:switchMinWidth="70dp"
                 android:switchPadding="20dp"
-                android:text=" Set Notification Alarm"
+                android:text="Включить оповещение"
                 android:textSize="17dp" />
 
             <RelativeLayout
@@ -151,15 +151,16 @@
                     android:layout_centerVertical="true"
                     android:layout_alignParentStart="true"
                     android:textSize="16dp"/>
+
                 <Button
                     android:id="@+id/button_location"
                     android:layout_width="wrap_content"
-                    android:layout_alignParentEnd="true"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_button"
+                    android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
+                    android:background="@drawable/round_button"
                     android:onClick="getLocation"
-                    android:text="GET LOCATION" />
+                    android:text="Получить геолокацию" />
             </RelativeLayout>
 
 
@@ -171,7 +172,7 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/button_states"
                 android:onClick="saveToDo"
-                android:text="SAVE"
+                android:text="СОХРАНИТЬ"
                 android:textColor="#000000"
                 android:textSize="25dp" />
 
@@ -181,10 +182,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/round_button"
-                android:text="camera_button"
+                android:text="Сделать снимок"
                 android:textColor="#000000"
                 android:textStyle="bold" />
 
@@ -201,11 +202,11 @@
             android:id="@+id/imageView"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="109dp"
-            app:srcCompat="@mipmap/todo"
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/linearLayout"
-            android:layout_marginTop="16dp" />
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="17dp"
+            app:srcCompat="@mipmap/todo" />
 
         <TextView
             android:id="@+id/textView"
@@ -217,7 +218,7 @@
             android:layout_toEndOf="@+id/imageView"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:text="Add ToDo"
+            android:text="Добавление задания"
             android:textColor="@color/colorPrimary"
             android:textSize="25dp" />
     </RelativeLayout>
